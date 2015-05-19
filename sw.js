@@ -19,7 +19,7 @@ this.addEventListener('install', function(event) {
 console.log('See');
 this.addEventListener('fetch', function(event) {
   console.log('Got here!');
-
-    return caches.match('/ServiceWorker/gallery/myLittleVader.jpg');
+  event.respondWidth(
+    caches.match('/ServiceWorker/gallery/myLittleVader.jpg'));
 
 });
