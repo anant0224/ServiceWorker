@@ -16,12 +16,14 @@ this.addEventListener('install', function(event) {
     })
   );
 });
-
+console.log('See');
 this.addEventListener('fetch', function(event) {
+  console.log('Got here!');
   var response;
   var cachedResponse = caches.match(event.request).then(function() {
-    //do nothing
+    console.log('Succeeded?');
   }, function() {
+    console.log('Failed');
     return fetch(event.request);
   }).then(function(r) {
     response = r;

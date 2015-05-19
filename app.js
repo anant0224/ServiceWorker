@@ -1,7 +1,7 @@
 // register service worker
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw-test/sw.js', { scope: '/sw-test/' }).then(function(reg) {
+  navigator.serviceWorker.register('/sw.js', { scope: '/gallery' }).then(function(reg) {
     // registration worked
     console.log('Registration succeeded. Scope is ' + reg.scope);
   }).catch(function(error) {
@@ -35,14 +35,19 @@ function imgLoad(imgJSON) {
     };
 
     // Send the request
+    alert('hi');
     request.send();
   });
 };
 
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
+
 var imgSection = document.querySelector('section');
 
-window.onload = function() {
-
+function create() {
   // load each set of image, alt text, name and caption
   for(i = 0; i<=Gallery.images.length-1; i++) {
     imgLoad(Gallery.images[i]).then(function(arrayResponse) {
@@ -65,4 +70,6 @@ window.onload = function() {
     });
   };
 
-};
+}
+
+
