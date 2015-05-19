@@ -19,13 +19,15 @@ this.addEventListener('install', function(event) {
 
 this.addEventListener('fetch', function(event) {
   var response;
-  var cachedResponse = caches.match(event.request).catch(function() {
+  var cachedResponse = caches.match(event.request).then(function() {
+    //do nothing
+  }, function() {
     return fetch(event.request);
   }).then(function(r) {
     response = r;
     caches.open('v1').then(function(cache) {
       cache.put(event.request, response);
-    });  
+    });
     return response.clone();
   }).catch(function() {
     return caches.match('/sw-test/gallery/myLittleVader.jpg');
