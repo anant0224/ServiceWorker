@@ -32,6 +32,12 @@ function imgLoad(imgJSON) {
     }, function() {
       reject(Error('There was a network error.'));
     });
+    
+    
+    
+
+
+    
 
     
   });
@@ -52,7 +58,7 @@ function create() {
       var myImage = document.createElement('img');
       var myFigure = document.createElement('figure');
       var myCaption = document.createElement('caption');
-      var imageURL = window.URL.createObjectURL(arrayResponse[0]);
+      var imageURL = arrayResponse[1].url;
 
       myImage.src = imageURL;
       myImage.setAttribute('alt', arrayResponse[1].alt);
