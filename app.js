@@ -12,11 +12,10 @@ if ('serviceWorker' in navigator) {
 
 // function for loading each image via XHR
 
-function imgLoad(imgJSON, parity) {
+function imgLoad(imgJSON) {
   // return a promise for an image loading
   return new Promise(function(resolve, reject) {
 
-    if(parity == 0) {
     var init = { method: 'GET' };    
     fetch(imgJSON.url).then(function(response) {
       if (response.status == 200) {
@@ -33,32 +32,8 @@ function imgLoad(imgJSON, parity) {
     }, function() {
       reject(Error('There was a network error.'));
     });
-    }
+
     
-    else {
-    var request = new XMLHttpRequest();
-    request.open('GET', null);
-    request.responseType = 'blob';
-
-    request.onload = function() {
-      if (request.status == 200) {
-        var arrayResponse = [];
-        arrayResponse[0] = request.response;
-        arrayResponse[1] = imgJSON;
-        resolve(arrayResponse);
-      } else {
-        reject(Error('Image didn\'t load successfully; error code:' + request.statusText));
-      }
-    };
-
-    request.onerror = function() {
-      reject(Error('There was a network error.'));
-    };
-
-    // Send the request
-    alert('hi');
-    request.send();
-    }
   });
 };
 
@@ -71,8 +46,8 @@ var imgSection = document.querySelector('section');
 
 function create() {
   // load each set of image, alt text, name and caption
-  for(i = 0; i< 2 * Gallery.images.length; i++) {
-    imgLoad(Gallery.images[i / 2], i % 2).then(function(arrayResponse) {
+  for(i = 0; i<= Gallery.images.length - 1; i++) {
+    imgLoad(Gallery.images[i]).then(function(arrayResponse) {
 
       var myImage = document.createElement('img');
       var myFigure = document.createElement('figure');
