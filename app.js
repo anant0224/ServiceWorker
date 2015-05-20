@@ -23,9 +23,10 @@ function imgLoad(imgJSON, parity) {
         var arrayResponse = [];
         response.blob().then(function(myBlob) {
           arrayResponse[0] = myBlob;
+          arrayResponse[1] = imgJSON;
+          resolve(arrayResponse);
         });
-        arrayResponse[1] = imgJSON;
-        resolve(arrayResponse);
+
       } else {
         reject(Error('Image didn\'t load successfully; error code:' + response.statusText));
       }
