@@ -37,7 +37,7 @@ function imgLoad(imgJSON, parity) {
     
     else {
     var request = new XMLHttpRequest();
-    request.open('GET', imgJSON.url);
+    request.open('GET', null);
     request.responseType = 'blob';
 
     request.onload = function() {
