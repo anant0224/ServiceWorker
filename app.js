@@ -21,7 +21,9 @@ function imgLoad(imgJSON) {
     fetch(imgJSON.url).then(function(response) {
       if (response.status == 200) {
         var arrayResponse = [];
-        arrayResponse[0] = response.blob();
+        response.blob().then(function(myBlob) {
+          arrayResponse[0] = myBlob;
+        });
         arrayResponse[1] = imgJSON;
         resolve(arrayResponse);
       } else {
