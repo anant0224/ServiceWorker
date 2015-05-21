@@ -8,7 +8,7 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-
+  console.log("Caught!");
 	// Clone the request for fetch and cache
 	// A request is a stream and can be consumed only once.
 	var fetchRequest = event.request.clone(),
