@@ -43,7 +43,9 @@ if (!Cache.prototype.addAll) {
             throw new NetworkError("Invalid scheme");
           }
 
-          return fetch(request.clone());
+
+          var cl = request.clone();
+          return fetch(cl);
         })
       );
     }).then(function(responses) {
