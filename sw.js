@@ -87,7 +87,7 @@ if (!CacheStorage.prototype.match) {
 
 
 this.addEventListener('install', function(event) {
-  event.waitUntil(
+ /* event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll(
         ['/ServiceWorker/',
@@ -102,7 +102,7 @@ this.addEventListener('install', function(event) {
         '/sw-test/gallery/snowTroopers.jpg']
       );
     })
-  );
+  );*/
 });
 console.log('See');
 
