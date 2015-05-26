@@ -14,6 +14,29 @@
   </head>
 
   <body>
+  <script type="text/javascript">
+  function req2() {
+  var request = new XMLHttpRequest();
+  request.open('GET', "https://anant0224.github.io/ServiceWorker/test.html");
+  request.responseType = 'blob';
+
+  request.onload = function() {
+    if (request.status == 200) {
+      console.log("Success");
+      //document.load(this.response);
+    } else {
+      console.log(Error('Image didn\'t load successfully; error code:' + request.statusText));
+    }
+  };
+
+  request.onerror = function() {
+    console.log(Error('There was a network error.'));
+  };
+
+  // Send the request
+  request.send();
+}
+</script>
     <section></section>
     <button onclick="req2()">Click</button>
     <script src="app.js"></script>
