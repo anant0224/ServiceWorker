@@ -1,7 +1,7 @@
 // register service worker
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('http://anant0224.github.io/ServiceWorker/sw.js', { scope: './' }).then(function(reg) {
+  navigator.serviceWorker.register('https://anant0224.github.io/ServiceWorker/sw.js', { scope: './' }).then(function(reg) {
     // registration worked
     console.log('Registration succeeded. Scope is ' + reg.scope);
   }).catch(function(error) {
