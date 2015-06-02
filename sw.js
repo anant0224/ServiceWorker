@@ -105,7 +105,8 @@ this.addEventListener('install', function(event) {
   );*/
 });
 console.log('See');
-
+console.log(this);
+console.log(self);
 self.addEventListener('activate', function(event) {
   console.log("SW activated");
 });
