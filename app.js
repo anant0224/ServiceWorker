@@ -74,4 +74,8 @@ function create() {
 
 }
 
+function killSW() {
+  console.log("tp");
+}
+
 //window.onload = create();
