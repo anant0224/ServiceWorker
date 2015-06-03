@@ -1,6 +1,6 @@
 if (!Cache.prototype.add) {
   Cache.prototype.add = function add(request) {
-    return this.addAll([request]);
+    return addAll([request]);
   };
 }
 
@@ -86,7 +86,7 @@ if (!CacheStorage.prototype.match) {
 
 
 
-this.addEventListener('install', function(event) {
+addEventListener('install', function(event) {
  /* event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll(
