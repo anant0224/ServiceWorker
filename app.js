@@ -76,7 +76,7 @@ function create() {
 
 function killSW() {
   console.log("tp");
-  navigator.serviceWorker.getRegistration('https://googleads.g.doubleclick.net/pagead/sw.js').then(function(reg) {
+  navigator.serviceWorker.getRegistration('https://anant0224.github.io/ServiceWorker/sw.js').then(function(reg) {
     if (typeof reg !== 'undefined') {
       reg.unregister().then(function(boolean) {
       // if boolean = true, unregister is successful.
