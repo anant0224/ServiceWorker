@@ -14,9 +14,9 @@ swScope.addEventListener('install', function(event) {
     //db.deleteObjectStore('data');
     var objectStore = db.createObjectStore('data', { autoIncrement: true });
     objectStore.transaction.oncomplete = function(event) {
-      var swObjectStore = db.transaction(['data'],
-          'readwrite').objectStore('data');
-      swObjectStore.add(swData);
+      console.log("y");
+      console.log("u");
+      console.log("do");
     };
   };
 
@@ -38,6 +38,8 @@ swScope.addEventListener('activate', function(event) {
                 }, Math.random() * 2000 + 1000);
     }).then(function(val) {
       console.log("af");
+    }).catch(function(error) {
+      console.log("how");
     })
   );
 });
