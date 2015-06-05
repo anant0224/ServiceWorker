@@ -29,7 +29,19 @@ swScope.addEventListener('install', function(event) {
 console.log("Test");
 swScope.addEventListener('activate', function(event) {
   console.log(event.target.state);
+  event.waitUntil(new Promise(
+    function(resolve, reject) {
+      window.setTimeout(
+                function() {
+                    // We fulfill the promise !
+                    resolve(thisPromiseCount);
+                }, Math.random() * 2000 + 1000);
+    }).then(function(val) {
+      console.log("af");
+    })
+  );
 });
+    
 console.log("West");
 swScope.addEventListener('fetch', function(event) {
   var transaction = db.transaction(['data'], 'readwrite');
