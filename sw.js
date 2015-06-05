@@ -19,7 +19,7 @@ swScope.addEventListener('install', function(event) {
           
         });
       });
-    });
+    })
   );
 }
 
