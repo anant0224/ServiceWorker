@@ -21,7 +21,7 @@ swScope.addEventListener('install', function(event) {
       });
     })
   );
-}
+});
 
 swScope.addEventListener('fetch', function(event) {
   var transaction = db.transaction(['data'], 'readwrite');
