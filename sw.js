@@ -4,7 +4,7 @@ var swData = { numRequests: 0 };
 
 swScope.addEventListener('install', function(event) {
   console.log(event.target.state);
-  event.waitUntil(new Promise(
+  var p = new Promise(
     function(resolve, reject) {
       setTimeout(
                 function() {
@@ -20,7 +20,7 @@ swScope.addEventListener('install', function(event) {
     }).catch(function(error) {
       console.log("how");
     })
-  );
+ 
   console.log("asdfl");
 });
 console.log("Test");
