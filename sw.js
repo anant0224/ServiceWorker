@@ -23,7 +23,7 @@ swScope.addEventListener('install', function(event) {
     db = event.target.result; // Average 8ms
   };
   event.waitUntil(openRequest);
-}
+});
 
 swScope.addEventListener('fetch', function(event) {
   var transaction = db.transaction(['data'], 'readwrite');
