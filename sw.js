@@ -31,7 +31,7 @@ swScope.addEventListener('activate', function(event) {
   console.log(event.target.state);
   event.waitUntil(new Promise(
     function(resolve, reject) {
-      window.setTimeout(
+      setTimeout(
                 function() {
                     // We fulfill the promise !
                     resolve(thisPromiseCount);
