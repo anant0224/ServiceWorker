@@ -29,7 +29,7 @@ swScope.addEventListener('install', function(event) {
 console.log("Test");
 swScope.addEventListener('activate', function(event) {
   console.log(event.target.state);
-  event.waitUntil(new Promise(
+  var p = new Promise(
     function(resolve, reject) {
       setTimeout(
                 function() {
@@ -40,8 +40,7 @@ swScope.addEventListener('activate', function(event) {
       console.log("af");
     }).catch(function(error) {
       console.log("how");
-    })
-  );
+    });
 });
     
 console.log("West");
