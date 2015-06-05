@@ -4,7 +4,8 @@ var swData = { numRequests: 0 };
 
 swScope.addEventListener('install', function(event) {
   /** @const {!IDBOpenDBRequest} */
-  event.waitUntil(var openRequest = swScope['indexedDB'].open('requestStats'));
+  var openRequest;
+  event.waitUntil(openRequest = swScope['indexedDB'].open('requestStats'));
 
   //Called when opening a db with a new version, or for the first time
   openRequest.onupgradeneeded = function(event) {
