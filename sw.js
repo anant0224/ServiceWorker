@@ -18,6 +18,7 @@ swScope.addEventListener('install', function(event) {
         request.addCallback(function(result) {
           
         });
+      });
     });
   );
 }
