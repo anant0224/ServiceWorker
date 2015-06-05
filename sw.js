@@ -21,6 +21,7 @@ swScope.addEventListener('install', function(event) {
       console.log("how");
     })
   );
+  console.log("asdfl");
 });
 console.log("Test");
 swScope.addEventListener('activate', function(event) {
