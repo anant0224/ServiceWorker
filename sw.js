@@ -20,25 +20,6 @@ swScope.addEventListener('install', function(event) {
         });
     });
   );
-  /** @const {!IDBOpenDBRequest} */
-  var openRequest = swScope['indexedDB'].open('requestStats');
-
-  //Called when opening a db with a new version, or for the first time
-  openRequest.onupgradeneeded = function(event) {
-    db = event.target.result; // Average 8ms
-    //db.deleteObjectStore('data');
-    var objectStore = db.createObjectStore('data', { autoIncrement: true });
-    objectStore.transaction.oncomplete = function(event) {
-      var swObjectStore = db.transaction(['data'],
-          'readwrite').objectStore('data');
-      swObjectStore.add(swData);
-    };
-  };
-
-  //Called on every successful open (after onupgradeneeded in case it is called)
-  openRequest.onsuccess = function(event) {
-    db = event.target.result; // Average 8ms
-  };
 }
 
 swScope.addEventListener('fetch', function(event) {
