@@ -27,6 +27,11 @@ swScope.addEventListener('install', function(event) {
   console.log(event.target.state);
 });
 
+console.log(ServiceWorker.state);
+swScope.addEventListener('activate', function(event) {
+  console.log(event.target.state);
+}
+
 swScope.addEventListener('fetch', function(event) {
   var transaction = db.transaction(['data'], 'readwrite');
   var objectStore = transaction.objectStore('data');
