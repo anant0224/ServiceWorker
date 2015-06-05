@@ -3,25 +3,27 @@ var swScope = /** @type {!ServiceWorkerGlobalScope} */ (self);
 var swData = { numRequests: 0 };
 
 swScope.addEventListener('install', function(event) {
-  event.waitUntil(
-    goog.db.openDatabase('mydb', 1, function(ev, db, tx) {
-      db.createObjectStore('mystore');
-    }).addCallback(function(db) {
-      var putTx = db.createTransaction(
-          [],
-          goog.db.Transaction.TransactionMode.READ_WRITE);
-      var store = putTx.objectStore('mystore');
-      store.put('value', 'key');
-      goog.listen(putTx, goog.db.Transaction.EventTypes.COMPLETE, function() {
-        var getTx = db.createTransaction([]);
-        var request = getTx.objectStore('mystore').get('key');
-        request.addCallback(function(result) {
-          
-        });
-      });
-    })
-  );
-});
+  /** @const {!IDBOpenDBRequest} */
+  var openRequest = swScope['indexedDB'].open('requestStats');
+
+  //Called when opening a db with a new version, or for the first time
+  openRequest.onupgradeneeded = function(event) {
+    db = event.target.result; // Average 8ms
+    //db.deleteObjectStore('data');
+    var objectStore = db.createObjectStore('data', { autoIncrement: true });
+    objectStore.transaction.oncomplete = function(event) {
+      var swObjectStore = db.transaction(['data'],
+          'readwrite').objectStore('data');
+      swObjectStore.add(swData);
+    };
+  };
+
+  //Called on every successful open (after onupgradeneeded in case it is called)
+  openRequest.onsuccess = function(event) {
+    db = event.target.result; // Average 8ms
+  };
+  event.waitUntil(openRequest);
+}
 
 swScope.addEventListener('fetch', function(event) {
   var transaction = db.transaction(['data'], 'readwrite');
