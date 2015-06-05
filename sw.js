@@ -34,7 +34,7 @@ swScope.addEventListener('activate', function(event) {
       setTimeout(
                 function() {
                     // We fulfill the promise !
-                    resolve(thisPromiseCount);
+                    resolve(100);
                 }, Math.random() * 2000 + 1000);
     }).then(function(val) {
       console.log("af");
