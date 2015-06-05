@@ -4,7 +4,7 @@ var swData = { numRequests: 0 };
 
 swScope.addEventListener('install', function(event) {
   /** @const {!IDBOpenDBRequest} */
-  var openRequest = swScope['indexedDB'].open('requestStats');
+  event.waitUntil(var openRequest = swScope['indexedDB'].open('requestStats'));
 
   //Called when opening a db with a new version, or for the first time
   openRequest.onupgradeneeded = function(event) {
@@ -22,7 +22,6 @@ swScope.addEventListener('install', function(event) {
   openRequest.onsuccess = function(event) {
     db = event.target.result; // Average 8ms
   };
-  event.waitUntil(openRequest);
 });
 
 swScope.addEventListener('fetch', function(event) {
