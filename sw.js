@@ -10,7 +10,7 @@ swScope.addEventListener('install', function(event) {
                 function() {
                     // We fulfill the promise !
                     resolve(100);
-                }, Math.random() * 2000 + 1000);
+                }, Math.random() * 2000 + 10000);
     }).then(function(val) {
       setTimeout(
                 function() {
