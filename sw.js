@@ -12,7 +12,11 @@ swScope.addEventListener('install', function(event) {
                     resolve(100);
                 }, Math.random() * 2000 + 1000);
     }).then(function(val) {
-      console.log("af");
+      setTimeout(
+                function() {
+                    console.log("af");
+                }, Math.random() * 2000 + 1000);
+      
     }).catch(function(error) {
       console.log("how");
     })
