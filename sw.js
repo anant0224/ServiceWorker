@@ -26,11 +26,11 @@ swScope.addEventListener('install', function(event) {
   };
   console.log(event.target.state);
 });
-
+console.log("Test");
 swScope.addEventListener('activate', function(event) {
   console.log(event.target.state);
 });
-
+console.log("West");
 swScope.addEventListener('fetch', function(event) {
   var transaction = db.transaction(['data'], 'readwrite');
   var objectStore = transaction.objectStore('data');
