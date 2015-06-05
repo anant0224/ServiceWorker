@@ -6,7 +6,7 @@ swScope.addEventListener('install', function(event) {
   /** @const {!IDBOpenDBRequest} */
   var openRequest;
   console.log(event.target.state);
-  openRequest = swScope['indexedDB'].open('requestStats');
+  event.waitUntil(openRequest = swScope['indexedDB'].open('requestStats'));
 
   //Called when opening a db with a new version, or for the first time
   openRequest.onupgradeneeded = function(event) {
@@ -29,7 +29,7 @@ swScope.addEventListener('install', function(event) {
 console.log("Test");
 swScope.addEventListener('activate', function(event) {
   console.log(event.target.state);
-  var p = new Promise(
+  event.waitUntil(new Promise(
     function(resolve, reject) {
       setTimeout(
                 function() {
@@ -40,8 +40,8 @@ swScope.addEventListener('activate', function(event) {
       console.log("af");
     }).catch(function(error) {
       console.log("how");
-    });
-    console.log("over");
+    })
+  );
 });
     
 console.log("West");
