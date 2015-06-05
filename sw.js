@@ -41,6 +41,7 @@ swScope.addEventListener('activate', function(event) {
     }).catch(function(error) {
       console.log("how");
     });
+    console.log("over");
 });
     
 console.log("West");
